@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Product.h"
 
-Product::Product(std::string name, float price, int quantity)
+Product::Product(std::string name, int price, int quantity)
 	:_productName(name),_productPrice(price), _productQuantity(quantity)
 {
 }
@@ -19,7 +19,7 @@ std::string Product::GetProductName()
 
 
 // Returns the price of the product
-float Product::GetProductPrice()
+int Product::GetProductPrice()
 {
 	return _productPrice;
 }

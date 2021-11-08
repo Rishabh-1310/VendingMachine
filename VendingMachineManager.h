@@ -8,10 +8,16 @@ public:
 	VendingMachineManager();
 	~VendingMachineManager();
 private:
-	// Pointer to the instance of soft drinks
-	Product* _productSoftDrinks;
-	// Pointer to the instance of chips
-	Product* _productChips;
+	// Pointer to the instance of Coke
+	Product* _productCoke;
+	// Pointer to the instance of Pepsi
+	Product* _productPepsi;
+	// Pointer to the instance of Water
+	Product* _productWater;
+	// Pointer to the instance of Lays
+	Product* _productLays;
+	// Pointer to the instance of Lays
+	Product* _productNachos;
 public:
 	// Returns the combined list of all items
 	std::vector<Product*> GetAllProducts();

@@ -1,6 +1,6 @@
 #include "Chips.h"
 
-Chips::Chips(std::string name, float price, int quantity)
+Chips::Chips(std::string name, int price, int quantity)
 	:Product(name, price, quantity)
 {
 }

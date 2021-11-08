@@ -4,14 +4,20 @@
 
 VendingMachineManager::VendingMachineManager()
 {
-	_productSoftDrinks = new SoftDrinks("Coke", 20.00, 3);
-	_productChips = new Chips("Lays", 10.00, 2);
+	_productCoke = new SoftDrinks("Coke", 15, 10);
+	_productPepsi = new SoftDrinks("Pepsi", 15, 10);
+	_productWater = new SoftDrinks("Water", 10, 20);
+	_productLays = new Chips("Lays", 10, 5);
+	_productNachos = new Chips("Nachos", 20, 5);
 }
 
 VendingMachineManager::~VendingMachineManager()
 {
-	delete _productSoftDrinks;
-	delete _productChips;
+	delete _productCoke;
+	delete _productPepsi;
+	delete _productWater;
+	delete _productLays;
+	delete _productNachos;
 }
 
 
@@ -19,8 +25,11 @@ VendingMachineManager::~VendingMachineManager()
 std::vector<Product*> VendingMachineManager::GetAllProducts()
 {
 	std::vector<Product*> allProducts;
-	if (_productChips->GetProductQuantity() > 0) allProducts.push_back(_productChips);
-	if (_productSoftDrinks->GetProductQuantity() > 0) allProducts.push_back(_productSoftDrinks);
+	if (_productCoke->GetProductQuantity() > 0) allProducts.push_back(_productCoke);
+	if (_productPepsi->GetProductQuantity() > 0) allProducts.push_back(_productPepsi);
+	if (_productWater->GetProductQuantity() > 0) allProducts.push_back(_productWater);
+	if (_productLays->GetProductQuantity() > 0) allProducts.push_back(_productLays);
+	if (_productNachos->GetProductQuantity() > 0) allProducts.push_back(_productNachos);
 
 	return allProducts;
 }

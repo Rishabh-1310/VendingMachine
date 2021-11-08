@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <iomanip>
 #include <unordered_map>
 #include "VendingMachineManager.h"
 #include "VendingException.h"
@@ -30,29 +31,34 @@ void GenerateOrders(VendingMachineManager& vendingMachine) {
 
 		std::cout << "Select an Index to select the item: ";
 		int index = -1;
+		if (std::cin.fail()) {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
 		std::cin >> index;
-
 		if (indexedProducts.find(index) == indexedProducts.end()) {
 			throw(VendingException(-2, "Selected Index, is not mapped to a product"));
 		}
 
 		std::cout << "Place the amount you paid here: ";
-		float amount = 0.00;
+		int amount = 0;
 		std::cin >> amount;
+		if (std::cin.fail()) {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
 		if (amount < indexedProducts[index]->GetProductPrice()) {
 			throw(VendingException(-3, "Insufficient amount provided"));
 		}
 
-		float balance = 0.00;
-		if (amount > indexedProducts[index]->GetProductPrice()) {
-			indexedProducts[index]->ProductBought();
-			balance = amount - indexedProducts[index]->GetProductPrice();
-			std::cout << "Your balance: " << balance << std::endl;
-		}
+		int balance = 0;
+		indexedProducts[index]->ProductBought();
+		balance = amount - indexedProducts[index]->GetProductPrice();
+		std::cout << "Your balance: " << balance << std::endl << std::endl;
 	}
 	catch (VendingException& ex) {
 		if (ex.GetErrorCode() == -1) throw(VendingException(-1, "Vending Machine out of Products"));
-		std::cout << ex.GetErrorMessage() << std::endl;
+		std::cerr << ex.GetErrorMessage() << std::endl << std::endl;
 	}
 }
 
@@ -63,6 +69,6 @@ int main()
 		while (true) GenerateOrders(vendingMachine);
 	}
 	catch (VendingException& ex) {
-		std::cout << ex.GetErrorMessage() << std::endl;
+		std::cerr << ex.GetErrorMessage() << std::endl;
 	}
 }

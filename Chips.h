@@ -4,7 +4,7 @@ class Chips :
 	public Product
 {
 public:
-	Chips(std::string name, float price, int quantity);
+	Chips(std::string name, int price, int quantity);
 	~Chips();
 };
 

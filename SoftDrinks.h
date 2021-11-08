@@ -4,7 +4,7 @@ class SoftDrinks :
 	public Product
 {
 public:
-	SoftDrinks(std::string name, float price, int quantity);
+	SoftDrinks(std::string name, int price, int quantity);
 	~SoftDrinks();
 };
 

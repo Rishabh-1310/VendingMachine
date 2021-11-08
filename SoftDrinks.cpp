@@ -1,6 +1,6 @@
 #include "SoftDrinks.h"
 
-SoftDrinks::SoftDrinks(std::string name, float price, int quantity)
+SoftDrinks::SoftDrinks(std::string name, int price, int quantity)
 	:Product(name, price, quantity)
 {
 }
